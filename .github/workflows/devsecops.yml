@@ -87,7 +87,7 @@ jobs:
   # ============================================
   # Stage 4: Build Docker
   # ============================================
-    build:
+  build:
     name: "🐳 Docker Build + Push"
     runs-on: ubuntu-latest
     needs: test
