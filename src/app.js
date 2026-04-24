@@ -37,10 +37,12 @@ app.post('/api/validate', (req, res) => {
   });
 });
 
-// INSEGURO — SQL injection via concatenação de string
-app.get('/api/search', (req, res) => {
-  const query = "SELECT * FROM messages WHERE text = '" + req.query.q + "'";
-  pool.query(query).then(r => res.json(r.rows));
+// SEGURO — parameterized query
+app.get('/api/search', async (req, res) => {
+  const result = await pool.query(
+    'SELECT * FROM messages WHERE text = $1',
+    [req.query.q]
+  );
+  res.json(result.rows);
 });
-
 module.exports = app;
