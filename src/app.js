@@ -37,7 +37,5 @@ app.post('/api/validate', (req, res) => {
   });
 });
 
-// Código intencionalmente ruim
-eval("console.log('inseguro')");
 
 module.exports = app;
