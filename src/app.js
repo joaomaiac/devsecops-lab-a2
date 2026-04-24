@@ -37,12 +37,6 @@ app.post('/api/validate', (req, res) => {
   });
 });
 
-// SEGURO — parameterized query
-app.get('/api/search', async (req, res) => {
-  const result = await pool.query(
-    'SELECT * FROM messages WHERE text = $1',
-    [req.query.q]
-  );
-  res.json(result.rows);
-});
+
+
 module.exports = app;
